@@ -1,4 +1,3 @@
-<p>login works! nooo</p>
 
 <div class="card-header">
     <h3>Login</h3>
@@ -20,7 +19,7 @@
     <div class="form-group">
       
         <label for="password">Password</label>
-        <input type="password" class="form-control" name="password" [(ngModel)]="user.password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  required>
+        <input type="password" class="form-control" name="password" [(ngModel)]="user.password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}"  required>
      
     </div>
     
