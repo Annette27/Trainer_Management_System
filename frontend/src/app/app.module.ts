@@ -13,8 +13,12 @@ import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { NewapplistService } from './newapplist.service';
+
 import { AuthService } from './auth.service';
 import { TokenInterceptorService } from './token-interceptor.service';
+
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +33,8 @@ import { TokenInterceptorService } from './token-interceptor.service';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [NewapplistService,AuthService,
     {

@@ -3,6 +3,8 @@ import{AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@
 import { Router, Routes } from '@angular/router';
 import { NewapplistService } from '../newapplist.service';
 import {createPasswordStrengthValidator} from './validate'
+import { faCoffee,faKey,faPhone,faEnvelope,faUserAlt,faMapMarkerAlt,faUserGraduate } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-signup',
@@ -10,6 +12,14 @@ import {createPasswordStrengthValidator} from './validate'
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+
+  faCoffee = faCoffee;
+  faKey=faKey;
+  faPhone=faPhone;
+  faEnvelope=faEnvelope;
+  faUserAlt=faUserAlt;
+  faMapMarkerAlt=faMapMarkerAlt;
+  faUserGraduate=faUserGraduate;
  trainer = {
     name: '',
     email:'',
@@ -26,22 +36,26 @@ export class SignupComponent implements OnInit {
     password:'',
     password1:''
     }
-
+    public noWhitespaceValidator(control: FormControl) {
+      const isWhitespace = (control.value || '').trim().length === 0;
+      const isValid = !isWhitespace;
+      return isValid ? null : { 'whitespace': true };
+  }
    
 imageData:string;
 
   constructor(private fb:FormBuilder, private router:Router, private newAppList:NewapplistService) {}
 
     registerForm =this.fb.group({
-      name:new FormControl('',[Validators.required,Validators.minLength(3)]),
+      name:new FormControl('',[Validators.required,Validators.minLength(3),this.noWhitespaceValidator]),
       email:new FormControl('',[Validators.pattern('[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}'),Validators.required]),
       phone: new FormControl('',[Validators.required,
         Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')
       ]),
-      address: new FormControl('',[Validators.required]),
-      highestQualification : new FormControl('',[Validators.required]),
-      skillSet: new FormControl('',[Validators.required]),
-      companyName: new FormControl('',[Validators.required]),
+      address: new FormControl('',[Validators.required,this.noWhitespaceValidator]),
+      highestQualification : new FormControl('',[Validators.required,this.noWhitespaceValidator]),
+      skillSet: new FormControl('',[Validators.required,this.noWhitespaceValidator]),
+      companyName: new FormControl('',[Validators.required,this.noWhitespaceValidator]),
       designation: new FormControl('',[Validators.required]),
       course: new FormControl('',[Validators.required]),
       image: new FormControl('',[Validators.required]),
