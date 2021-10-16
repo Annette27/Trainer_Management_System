@@ -11,7 +11,7 @@ export class TokenInterceptorService {
     let tokenizedReq=req.clone(
       {
         setHeaders:{
-          Authorization:'Bearer ${authservice.getToken} ${authservice.getToken2()}'
+          Authorization:`Bearer ${authservice.getToken()} ${authservice.getToken2()}`
         }
       }
     )
