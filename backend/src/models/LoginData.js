@@ -16,7 +16,8 @@ var LoginSchema = new Schema({
     imagepath:String,
     id:String,
     password:String,
-    // password1:string
+    // password1:string.,
+    type:String
 });
 var LoginData = mongoose.model('LoginData', LoginSchema);
 module.exports = LoginData;
