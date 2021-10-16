@@ -12,10 +12,10 @@ export class NewapplistService {
     return this.http.post<any>("http://localhost:3000/newappl",{"trainer":item});
     
   }
-  idNum(){
-    return this.http.get<any>("http://localhost:3000/id")
+  // idNum(){
+  //   return this.http.get<any>("http://localhost:3000/id")
     
 
-  }
+  // }
   constructor(private http :HttpClient) { }
 }
