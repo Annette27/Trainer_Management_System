@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import{FormsModule,ReactiveFormsModule} from '@angular/forms'
 import {HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http'
+import {GridModule,FilterService,CommandColumnService} from '@syncfusion/ej2-angular-grids'
 
 //import { FormsModule } from '@angular/forms';
 
@@ -18,6 +19,11 @@ import { AuthService } from './auth.service';
 import { TokenInterceptorService } from './token-interceptor.service';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ApproveComponent } from './approve/approve.component';
+import { TrainerlistComponent } from './trainerlist/trainerlist.component';
+import { FooterComponent } from './footer/footer.component';
+import { AddcoursesComponent } from './addcourses/addcourses.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
 
 
 @NgModule({
@@ -26,7 +32,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HeaderComponent,
     HomeComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    ApproveComponent,
+    TrainerlistComponent,
+    FooterComponent,
+    AddcoursesComponent,
+    AboutusComponent
   ],
   imports: [
     BrowserModule,
@@ -34,14 +45,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    GridModule
   ],
   providers: [NewapplistService,AuthService,
     {
       provide:HTTP_INTERCEPTORS,
       useClass:TokenInterceptorService,
       multi:true //means it can handle multiple request
-    }],
+    },FilterService,CommandColumnService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
