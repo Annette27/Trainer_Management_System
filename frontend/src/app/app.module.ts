@@ -24,6 +24,8 @@ import { TrainerlistComponent } from './trainerlist/trainerlist.component';
 import { FooterComponent } from './footer/footer.component';
 import { AddcoursesComponent } from './addcourses/addcourses.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
+import { TrainerprofileComponent } from './trainerprofile/trainerprofile.component';
+import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { AboutusComponent } from './aboutus/aboutus.component';
     TrainerlistComponent,
     FooterComponent,
     AddcoursesComponent,
-    AboutusComponent
+    AboutusComponent,
+    TrainerprofileComponent,
+    UpdateprofileComponent
   ],
   imports: [
     BrowserModule,

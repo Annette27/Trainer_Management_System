@@ -81,6 +81,10 @@ function verifyToken1(req,res,next){
 
 app.post('/login',function(req,res){
 
+    // res.header("Access-Control-Allow-Orgin","*") //FROM ANY SERVER WE GET THE "/products" REQUEST WE NEED TO ACCEPT IT
+    // res.header("Acess-Conrol-Allow-Methods: GET,POST,PATCH,PUT,DELETE,OPTIONS");  //METHODS WE ARE ACCEPTING
+
+
     let userData=req.body
 
     if(username === userData.uname && password === userData.password){
@@ -101,7 +105,8 @@ app.post('/login',function(req,res){
         else if(data.password===userData.password){
             let payload = {subject:userData.uname+userData.password}
             let token1 = jwt.sign(payload,'secretKey')
-            res.status(200).send({token1});
+            console.log(token1,data.name)
+            res.status(200).send({token1,data});
             // console.log("success")
         }
     
@@ -115,6 +120,59 @@ app.post('/login',function(req,res){
     }
 })
     
+app.get('/:pro',  (req, res) => {
+  
+    const pro = req.params.pro;
+      LoginData.findOne({"_id":pro})
+      .then((data)=>{
+          res.send(data);
+      })
+      })
+
+
+      app.put('/update',(req,res)=>{
+        console.log(req.body)
+        id=req.body._id
+        names= req.body.name
+        email = req.body.email
+        phone = req.body.phone
+        address = req.body.address
+        highestQualification = req.body.highestQualification
+        skillSet = req.body.skillSet
+        companyName = req.body.companyName
+        designation = req.body.designation
+        course = req.body.course
+        image = req.body.image
+        imagepath = req.body.imagepath
+       LoginData.findByIdAndUpdate({"_id":id},
+                                    {$set:{"name":names,
+                                    "email":email,
+                                    "phone":phone,
+                                    "address":address,
+                                    "highestQualification":highestQualification,
+                                "skillSet":skillSet,
+                            "companyName":companyName,
+                        "designation":designation,
+                    "course":course,
+                "image":image,
+            "imagepath":imagepath}})
+       .then(function(){
+           res.send();
+       })
+      })
+
+
+
+// app.post('/profile',function(req,res){
+//     let user = req.body
+//     LoginData.findOne({password:user.pro})
+//     .then((data)=>{
+//         res.send(data);
+//     })
+// })
+
+
+
 //     if(username != userData.uname){
 //       res.status(401).send("invalid username")
 //     }else if(password != userData.password){
@@ -152,6 +210,14 @@ app.delete('/remove/:id',verifyToken1,(req,res)=>{
     })
 
 })
+// app.get('/:id',  (req, res) => {
+  
+//     const id = req.params.id;
+//       LoginData.findOne({"_id":id})
+//       .then((profile)=>{
+//           res.status(200).send({profile});
+//       });
+//     })
 
 // delete course
 app.delete('/delete/:id',verifyToken1,(req,res)=>{

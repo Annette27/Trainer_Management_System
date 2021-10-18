@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,13 +21,14 @@ export class LoginComponent implements OnInit {
   .subscribe(res=>{
     if(res.token){
     localStorage.setItem('token',res.token)
-      
-    this.router.navigate(['/'])
+    
+    this.router.navigate(['profile'])
     alert("success")
     }
     if(res.token1){
       localStorage.setItem('token1',res.token1)
-      this.router.navigate(['/'])
+      localStorage.setItem('data',res.data._id)
+      this.router.navigate(['profile'])
       console.log("user");
     }
     else if(res.error=="Invalid User"){
