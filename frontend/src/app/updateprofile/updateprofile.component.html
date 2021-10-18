@@ -1,0 +1,65 @@
+<div class="card"></div>
+<form (ngSubmit)="editProfile()">
+    <div class="card-header">
+        {{title}}
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                
+                <tr>
+                    <td><label>Full Name</label></td>
+                    <td><input type="text" placeholder="Full Name" name="b_name" [(ngModel)]="Profile.name"></td>
+                </tr>
+                <tr>
+                    <td><label>Email</label></td>
+                    <td><input type="text" placeholder="Email" name="b_author" [(ngModel)]="Profile.email"></td>
+                </tr>
+                <tr>
+                    <td><label>Phone Number</label></td>
+                    <td><input type="text" placeholder="Phone Number" name="b_genre" [(ngModel)]="Profile.phone"></td>
+                </tr>
+                <tr>
+                    <td><label>Address</label></td>
+                    <td><input type="text" placeholder="Address" name="b_des" [(ngModel)]="Profile.address"></td>
+                </tr>
+                <tr>
+                    <td><label>Highest Qualification</label></td>
+                    <td><input type="text" placeholder="Highest Qualification" name="b_image" [(ngModel)]="Profile.highestQualification"></td>
+                </tr>
+                <tr>
+                  <td><label>Skill Sets</label></td>
+                  <td><input type="text" placeholder="Skill Sets" name="b_image" [(ngModel)]="Profile.skillSet"></td>
+              </tr>
+              <tr>
+                <td><label>Company Name</label></td>
+                <td><input type="text" placeholder="Company Name" name="b_image" [(ngModel)]="Profile.companyName"></td>
+            </tr>
+            <tr>
+              <td><label>Designation</label></td>
+              <td><input type="text" placeholder="Designation" name="b_image" [(ngModel)]="Profile.designation"></td>
+          </tr>
+          <tr>
+          <td><label>ICTAK Course Handling</label></td>
+          <select type="course" name="course"  [(ngModel)]="Profile.course" required >
+            <option value="FSD">FSD</option>
+            <option value="DSA">DSA</option>
+            <option value="RPA">RPA</option>
+        </select>
+      </tr>
+      <tr>
+        <td><label>Image</label></td>
+        <img [src]="Profile.imagepath" alt="" class="rounded-circle" width="250" height="250">
+        <input type="file" (change)="submitImage($event)"     accept="image/*" required>
+        <img src={{url}}  alt="" style="width: 100px; height: 100px; margin-top: 5%;">
+    </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="UPDATE PROFILE"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+</form>
