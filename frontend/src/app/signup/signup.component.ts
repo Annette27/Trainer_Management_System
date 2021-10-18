@@ -4,6 +4,9 @@ import { Router, Routes } from '@angular/router';
 import { NewapplistService } from '../newapplist.service';
 import {createPasswordStrengthValidator} from './validate'
 import { faCoffee,faKey,faPhone,faEnvelope,faUserAlt,faMapMarkerAlt,faUserGraduate } from '@fortawesome/free-solid-svg-icons';
+import { CourseModel } from '../models/courses';
+import { Subscription } from 'rxjs';
+import { ApplistService } from '../applist.service';
 
 
 @Component({
@@ -36,6 +39,8 @@ export class SignupComponent implements OnInit {
     password:'',
     password1:''
     }
+    courses:CourseModel[]=[];
+    private courseSubscription : Subscription;
     public noWhitespaceValidator(control: FormControl) {
       const isWhitespace = (control.value || '').trim().length === 0;
       const isValid = !isWhitespace;
@@ -44,7 +49,7 @@ export class SignupComponent implements OnInit {
    
 imageData:string;
 
-  constructor(private fb:FormBuilder, private router:Router, private newAppList:NewapplistService) {}
+  constructor(private fb:FormBuilder, private router:Router, private newAppList:NewapplistService,private AppService :ApplistService) {}
 
     registerForm =this.fb.group({
       name:new FormControl('',[Validators.required,Validators.minLength(3),this.noWhitespaceValidator]),
@@ -137,9 +142,15 @@ newSignup(){
   }
 
   ngOnInit(): void {
-this.newAppList.idNum().subscribe(res=>{
-  this.trainer.id=res.id
-  console.log(res.id)
+// this.newAppList.idNum().subscribe(res=>{
+//   this.trainer.id=res.id
+//   // console.log(res.id)
+// })
+this.AppService.getCourses();
+this.courseSubscription=this.AppService
+.getCoursesStream()
+.subscribe((courses:CourseModel[])=>{
+this.courses=courses;
 })
 
   }
