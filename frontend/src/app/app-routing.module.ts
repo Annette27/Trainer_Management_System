@@ -8,6 +8,8 @@ import { ApproveComponent } from './approve/approve.component';
 import { TrainerlistComponent } from './trainerlist/trainerlist.component';
 import { AddcoursesComponent } from './addcourses/addcourses.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
+import { TrainerprofileComponent } from './trainerprofile/trainerprofile.component';
+import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
 
 const routes: Routes = [{path:'', component:HomeComponent},
 {path:'home', component:HomeComponent},
@@ -16,7 +18,9 @@ const routes: Routes = [{path:'', component:HomeComponent},
 {path:'login', component:LoginComponent},
 {path:'approve', component:ApproveComponent,canActivate:[AuthGuard]},
 {path:'trainers', component:TrainerlistComponent,canActivate:[AuthGuard]},
-{path:'courses', component:AddcoursesComponent,canActivate:[AuthGuard]}];
+{path:'courses', component:AddcoursesComponent,canActivate:[AuthGuard]},
+{path:'profile',component:TrainerprofileComponent},
+{path:'update',component:UpdateprofileComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -10,6 +10,9 @@ export class AuthService {
    
     
   }
+  // logiUser(){
+  //   return this.Http.get("http://localhost:3000/login")
+  // }
 
   constructor(private Http:HttpClient) { }
   loggedin(){
