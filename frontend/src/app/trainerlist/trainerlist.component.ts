@@ -25,6 +25,7 @@ import {CommandModel,CommandClickEventArgs,GridComponent,Column,IRow,EditSetting
   <e-column field='skillSet' headerText='Skill Set' textAlign='Center' width=50></e-column>
   <e-column field='type' headerText='Type of Employment' textAlign='Center' width=50></e-column>
   <e-column headerText='Allocate' width=50 [commands]='commands'></e-column>
+ 
    </e-columns>
     </ejs-grid>
   </div>
