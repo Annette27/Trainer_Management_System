@@ -2,3 +2,25 @@
     min-height: 1064px;
     background: transparent;
   }
+  #intro.parallax-window{
+    background-image: url("../../assets/img/HD.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+
+  }
+  #menu.parallax-window{
+    background-image: url("../../assets/img/bg3.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+
+  }
+ 
+  #about.parallax-window{
+    background-image: url( "../../assets/img/online6.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+
+  }
