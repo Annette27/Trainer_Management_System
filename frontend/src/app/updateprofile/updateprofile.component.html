@@ -1,6 +1,7 @@
-<div class="card"></div>
-<form (ngSubmit)="editProfile()">
-    <div class="card-header">
+<div class="body" style="background-color: rgb(137, 189, 196);">
+<div class="card" style="background-color: rgb(182, 199, 231)">
+<form class="form " #trainerupdate="ngForm" (ngSubmit)="editProfile()">
+    <div class="card-header" style="background-color: rgb(182, 199, 231); font-size: larger;font-weight: 500;">
         {{title}}
     </div>
     <div class="card-body">
@@ -8,58 +9,65 @@
         <table class="table">
             <tbody>
                 
-                <tr>
+                <!-- <tr>
                     <td><label>Full Name</label></td>
-                    <td><input type="text" placeholder="Full Name" name="b_name" [(ngModel)]="Profile.name"></td>
-                </tr>
+                    <td><input type="text" class="form-control" placeholder="Full Name" name="name"  [(ngModel)]="Profile.name" required></td>
+                </tr> -->
                 <tr>
                     <td><label>Email</label></td>
-                    <td><input type="text" placeholder="Email" name="b_author" [(ngModel)]="Profile.email"></td>
+                    <td><input type="text" class="form-control" placeholder="Email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required [(ngModel)]="Profile.email"></td>
                 </tr>
                 <tr>
                     <td><label>Phone Number</label></td>
-                    <td><input type="text" placeholder="Phone Number" name="b_genre" [(ngModel)]="Profile.phone"></td>
+                    <td><input type="text" class="form-control" placeholder="Phone Number" name="phone" pattern="^((\\+91-?)|0)?[0-9]{10}$" [(ngModel)]="Profile.phone" required></td>
                 </tr>
                 <tr>
                     <td><label>Address</label></td>
-                    <td><input type="text" placeholder="Address" name="b_des" [(ngModel)]="Profile.address"></td>
+                    <td><input type="text"class="form-control" placeholder="Address" name="address" [(ngModel)]="Profile.address" required></td>
                 </tr>
                 <tr>
                     <td><label>Highest Qualification</label></td>
-                    <td><input type="text" placeholder="Highest Qualification" name="b_image" [(ngModel)]="Profile.highestQualification"></td>
+                    <td><input type="text" class="form-control" placeholder="Highest Qualification" name="quali" [(ngModel)]="Profile.highestQualification" required></td>
                 </tr>
                 <tr>
                   <td><label>Skill Sets</label></td>
-                  <td><input type="text" placeholder="Skill Sets" name="b_image" [(ngModel)]="Profile.skillSet"></td>
+                  <td><input type="text" class="form-control" placeholder="Skill Sets" name="skillSet" [(ngModel)]="Profile.skillSet" required></td>
               </tr>
-              <tr>
+              <!-- <tr>
                 <td><label>Company Name</label></td>
-                <td><input type="text" placeholder="Company Name" name="b_image" [(ngModel)]="Profile.companyName"></td>
+                <td><input type="text" class="form-control" placeholder="Company Name" name="companyName" [(ngModel)]="Profile.companyName" required></td>
             </tr>
             <tr>
               <td><label>Designation</label></td>
-              <td><input type="text" placeholder="Designation" name="b_image" [(ngModel)]="Profile.designation"></td>
-          </tr>
-          <tr>
+              <td><input type="text" class="form-control" placeholder="Designation" name="designation" [(ngModel)]="Profile.designation" required></td>
+          </tr> -->
+          <!-- <tr>
           <td><label>ICTAK Course Handling</label></td>
-          <select type="course" name="course"  [(ngModel)]="Profile.course" required >
-            <option value="FSD">FSD</option>
-            <option value="DSA">DSA</option>
-            <option value="RPA">RPA</option>
-        </select>
-      </tr>
+          <select class="form-control" type="course" name="course"  id="course"  [(ngModel)]="Profile.course" required >
+            <option value="" >Select course</option>
+             
+            <option *ngFor="let i of courses" value={{i.name}}>{{i.name}}</option>
+          </select>
+      </tr> -->
       <tr>
         <td><label>Image</label></td>
         <img [src]="Profile.imagepath" alt="" class="rounded-circle" width="250" height="250">
         <input type="file" (change)="submitImage($event)"     accept="image/*" required>
         <img src={{url}}  alt="" style="width: 100px; height: 100px; margin-top: 5%;">
+        <br>
     </tr>
                 <tr>
                     <td></td>
-                    <td><input type="submit" value="UPDATE PROFILE"></td>
+                    <!-- <td><input *ngIf="authservice.loggedUser()" type="submit" value="UPDATE PROFILE"> </td> -->
+                   <td> <button class="btn btn-success" style="cursor:pointer" *ngIf="authservice.loggedUser()"  [disabled]="trainerupdate.form.invalid"  >UPDATE</button> </td>
+
+                   <td> <button  class="btn btn-danger" style="cursor:pointer" *ngIf="authservice.loggedUser()" (click)="cancel(Profile)"  > CANCEL</button> </td>
+                  
                 </tr>
             </tbody>
         </table>
     </div>
     </div>
 </form>
+</div>
+</div>
