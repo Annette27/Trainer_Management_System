@@ -26,6 +26,8 @@ import { AddcoursesComponent } from './addcourses/addcourses.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { TrainerprofileComponent } from './trainerprofile/trainerprofile.component';
 import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
+import { ApplistService } from './applist.service';
+import { ProfileService } from './profile.service';
 
 
 @NgModule({
@@ -52,7 +54,7 @@ import { UpdateprofileComponent } from './updateprofile/updateprofile.component'
     FontAwesomeModule,
     GridModule
   ],
-  providers: [NewapplistService,AuthService,
+  providers: [NewapplistService,AuthService,ApplistService,ProfileService,
     {
       provide:HTTP_INTERCEPTORS,
       useClass:TokenInterceptorService,
