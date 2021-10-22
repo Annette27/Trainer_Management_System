@@ -4,7 +4,7 @@
     <div class="header-right hoverstyle">
         <a  *ngIf='!authservice.loggedin()||!authservice.loggedUser()' routerLink='/'>Home</a>
         <a  *ngIf='!authservice.loggedin()||!authservice.loggedUser()' routerLink='aboutus'>About Us</a>
-
+        <a  *ngIf='authservice.loggedUser()' routerLink='profile'>Profile</a>
         <a *ngIf='!(authservice.loggedin()||authservice.loggedUser())' routerLink='login'>Login</a>
         <a   *ngIf='!(authservice.loggedin()||authservice.loggedUser())' routerLink='signup'>Signup</a>
         <a  *ngIf='authservice.loggedin()' routerLink='approve'>New Enrollment Application</a>
