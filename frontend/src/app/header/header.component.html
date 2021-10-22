@@ -1,19 +1,34 @@
-<div class="header">
-    <img class="logo" style="height: 80px; width: 80px;" src="https://ictkerala.org/wp-content/uploads/2019/01/cropped-ict-ico.png" alt="logo">
-    <a href="#default" class="logo trial" style="font-family: 'Exo', sans-serif;">TRAINER MANAGEMENT SYSTEM</a>
-    <div class="header-right hoverstyle">
-        <a  *ngIf='!authservice.loggedin()||!authservice.loggedUser()' routerLink='/'>Home</a>
-        <a  *ngIf='!authservice.loggedin()||!authservice.loggedUser()' routerLink='aboutus'>About Us</a>
-        <a  *ngIf='authservice.loggedUser()' routerLink='profile'>Profile</a>
-        <a *ngIf='!(authservice.loggedin()||authservice.loggedUser())' routerLink='login'>Login</a>
-        <a   *ngIf='!(authservice.loggedin()||authservice.loggedUser())' routerLink='signup'>Signup</a>
-        <a  *ngIf='authservice.loggedin()' routerLink='approve'>New Enrollment Application</a>
-        <a  *ngIf='authservice.loggedin()' routerLink='trainers'>Trainers List</a>
-        <a  *ngIf='authservice.loggedin()' routerLink='courses'>Add Courses</a>
-
-           <a *ngIf='authservice.loggedin()||authservice.loggedUser()' routerLink='logout' (click)='logOut()'>Log Out</a>
-
-
-
+<nav class="navbar sticky-top navbar-expand-lg " style="background-color:rgba(0, 0, 0, 0.685)">
+  <img class="logo" style="height: 70px; width: 70px;" src="https://ictkerala.org/wp-content/uploads/2019/01/cropped-ict-ico.png" alt="logo">
+  <div class="container-fluid">
+    <a class="navbar-brand text-light" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;" routerLink="">TRAINER MANAGEMENT SYSTEM</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+      <div class="navbar-nav navbar-right" id="nav1">
+        <a  *ngIf='!authservice.loggedin()||!authservice.loggedUser()' routerLink='/'><button class="btn btn-outline-light me-2 glyphicon glyphicon-home" type="button"> Home</button></a>
+        <a *ngIf='!(authservice.loggedin()||authservice.loggedUser())' routerLink='aboutus'> <button class="btn btn-outline-light me-2 glyphicon glyphicon-home" type="button">AboutUs</button></a>
+        <a *ngIf='!(authservice.loggedin()||authservice.loggedUser())' routerLink='login'><button class="btn btn-outline-light me-2 glyphicon glyphicon-home" type="button">LogIn</button></a>
+        <a   *ngIf='!(authservice.loggedin()||authservice.loggedUser())' routerLink='signup'> <button class="btn btn-outline-light me-2 glyphicon glyphicon-home" type="button">SignUp</button></a>
+        <a   *ngIf='authservice.loggedUser()' routerLink='profile'> <button class="btn btn-outline-light me-2 glyphicon glyphicon-home" type="button">Profile</button></a>
+        <a  *ngIf='authservice.loggedin()' routerLink='approve'> <button class="btn btn-outline-light me-2 glyphicon glyphicon-home" type="button"> New Enrollment Application</button></a>
+        <a  *ngIf='authservice.loggedin()' routerLink='trainers'> <button class="btn btn-outline-light me-2 glyphicon glyphicon-home" type="button"> Trainers List</button></a>
+        <a  *ngIf='authservice.loggedin()' routerLink='courses'> <button class="btn btn-outline-light me-2 glyphicon glyphicon-home" type="button"> Add Courses</button></a>
+        <a *ngIf='authservice.loggedin()||authservice.loggedUser()' routerLink='logout' (click)='logOut()'> <button class="btn btn-outline-light me-2 glyphicon glyphicon-home" type="button">Log Out</button></a>
+      </div>
     </div>
   </div>
+</nav>
+  <!-- <div id="intro" class="parallax-window" data-parallax="scroll" data-image-src="img/antique-cafe-bg-01.jpg">
+    <nav id="tm-nav" class="fixed w-full">
+        <div class="tm-container mx-auto px-2 md:py-6 text-right">
+            <button class="md:hidden py-2 px-2" id="menu-toggle"><i class="fas fa-2x fa-bars tm-text-gold"></i></button>
+            <ul class="mb-3 md:mb-0 text-2xl font-normal flex justify-end flex-col md:flex-row">
+                <li class="inline-block mb-4 mx-4"><a href="#home" class="tm-text-gold py-1 md:py-3 px-4">Home</a></li>
+                <li class="inline-block mb-4 mx-4"><a href="#menu" class="tm-text-gold py-1 md:py-3 px-4">Menu</a></li>
+                <li class="inline-block mb-4 mx-4"><a href="#about" class="tm-text-gold py-1 md:py-3 px-4">About</a></li>
+                <li class="inline-block mb-4 mx-4"><a href="#contact" class="tm-text-gold py-1 md:py-3 px-4">Contact</a></li>
+            </ul>
+        </div>            
+    </nav> -->
