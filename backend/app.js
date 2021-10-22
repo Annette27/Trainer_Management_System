@@ -105,7 +105,7 @@ app.post('/login',function(req,res){
         else if(data.password===userData.password){
             let payload = {subject:userData.uname+userData.password}
             let token1 = jwt.sign(payload,'secretKey')
-            console.log(token1,data.name)
+            // console.log(token1,data.name)
             res.status(200).send({token1,data});
             // console.log("success")
         }
@@ -131,7 +131,7 @@ app.get('/:pro',  (req, res) => {
 
 
       app.put('/update',(req,res)=>{
-        console.log(req.body)
+        // console.log(req.body)
         id=req.body._id
         names= req.body.name
         email = req.body.email
@@ -247,6 +247,78 @@ app.delete('/delete/:id',verifyToken1,(req,res)=>{
 
 })
 // Add course
+// app.post('/course',verifyToken1,(req,res)=>{
+//     const name=req.body.batch.course
+//     const batch = req.body.batch.name
+//     const courseid = req.body.batch.courseid
+
+//     CourseData.findOne({"name":req.body.batch.course})
+//     .then((data)=>{
+//         if(data==null){
+//             var course={
+//                 name:req.body.batch.course,
+//                 courseid:req.body.batch.courseid
+//              }
+//              var course = CourseData(course);
+//              course.save();
+//              // res.send();
+//               var batch = {
+//                  course:req.body.batch.course,
+//                  name:req.body.batch.name,
+//                 courseid:req.body.batch.courseid
+    
+//              }
+//              var batch = BatchData(batch);
+//              batch.save();
+//              let error ="Batch added"
+    
+//              res.send({error});
+//         }
+//         else{
+//             CourseData.findOne({"courseid":req.body.batch.courseid})
+//             .then((data)=>{
+//                 if(data==null){
+//                let error = "Course ID incorrect"
+//             //    console.log(error)
+//                res.send({error});
+//                 }
+//                 else{
+//                     BatchData.findOne({"name":req.body.batch.name})
+//                     .then((data)=>{
+//                         if(data==null){
+//                             var batch = {
+//                                                courseid:req.body.batch.courseid,
+//                                                course:req.body.batch.course,
+//                                                name:req.body.batch.name
+//                                            }
+//                                         //    console.log(batch)
+                               
+//                                            var batch = BatchData(batch);
+//                                            batch.save();
+//                                            let error = "Batch added"
+                               
+//                                            res.send({error});
+//                         }
+//                         else{
+//                             let error = "Batch already exixts"
+//                                     //    console.log(error)
+//                                        res.send({error});
+//                         }
+//                     })
+//                 }
+//             })
+
+
+//                    } 
+        
+//     })
+  
+    
+//   })
+
+// Add course end
+
+// Add course
 app.post('/course',verifyToken1,(req,res)=>{
     const name=req.body.batch.course
     const batch = req.body.batch.name
@@ -274,15 +346,8 @@ app.post('/course',verifyToken1,(req,res)=>{
     
              res.send({error});
         }
-        else{
-            CourseData.findOne({"courseid":req.body.batch.courseid})
-            .then((data)=>{
-                if(data==null){
-               let error = "Course ID incorrect"
-            //    console.log(error)
-               res.send({error});
-                }
-                else{
+        else if(data.courseid==req.body.batch.courseid){
+                           
                     BatchData.findOne({"name":req.body.batch.name})
                     .then((data)=>{
                         if(data==null){
@@ -305,11 +370,13 @@ app.post('/course',verifyToken1,(req,res)=>{
                                        res.send({error});
                         }
                     })
-                }
-            })
-
-
-                   } 
+                
+                    } 
+                   else{
+                    let error = "Course ID incorrect"
+                    //    console.log(error)
+                       res.send({error});
+                   }
         
     })
   
@@ -317,8 +384,6 @@ app.post('/course',verifyToken1,(req,res)=>{
   })
 
 // Add course end
-
-
 // Approve trainer
 // app.post('/trainer',(req,res)=>{
     
@@ -564,10 +629,10 @@ app.post('/newappl',function(req,res){
 const nodemailer = require('nodemailer')
 const {google} = require('googleapis')
 
-const CLIENT_ID = '969416498839-luqrjn5g86hmiskk50nebjnv0mt4nbfd.apps.googleusercontent.com'
-const CLIENT_SECRET = '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'
+const CLIENT_ID = '417983538193-ohi6nlpv12lojr4camd5r8dt0lpbfc8d.apps.googleusercontent.com'
+const CLIENT_SECRET = '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'
 const REDIRECT_URI = 'https://developers.google.com/oauthplayground'
-const REFRESH_TOKEN = '1//045QNxudOy6-4CgYIARAAGAQSNwF-L9IrFJhDKPQk-tDVOWAYpSw_wFmPI9KaQaX8vvbr6rSSTspGLXdCzzYcqQLCdhBybukMu7Y'
+const REFRESH_TOKEN = '1//04ceawDeSW8yYCgYIARAAGAQSNwF-L9Irueh2_3kOeMdaSr2dWpn7A4kUMt4EjziV1ZY6DdCRjXZif07HhDIT5kETJ_kEK5vWDUY'
 
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID,CLIENT_SECRET,REDIRECT_URI)
 oAuth2Client.setCredentials({refresh_token:REFRESH_TOKEN})

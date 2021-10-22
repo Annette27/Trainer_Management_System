@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('token1');
     localStorage.removeItem('approveId');
     localStorage.removeItem('allocationId');
+    localStorage.removeItem('data')
 
 
 

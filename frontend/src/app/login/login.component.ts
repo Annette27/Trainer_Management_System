@@ -22,13 +22,13 @@ export class LoginComponent implements OnInit {
     if(res.token){
     localStorage.setItem('token',res.token)
     
-    this.router.navigate(['profile'])
+    this.router.navigate(['home'])
     alert("success")
     }
     if(res.token1){
       localStorage.setItem('token1',res.token1)
       localStorage.setItem('data',res.data._id)
-      this.router.navigate(['profile'])
+      this.router.navigate(['home'])
       console.log("user");
     }
     else if(res.error=="Invalid User"){
