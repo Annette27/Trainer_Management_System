@@ -12,6 +12,8 @@ const coursesRoutes = require('./routes/courses')
 const batchesRoutes = require('./routes/batches')
 const allocationssRoutes= require('./routes/allocations')
 
+
+
 mongoose.connect("mongodb+srv://userone:userone@libraryfiles.o5pxy.mongodb.net/TRAINERMANGEMENT?retryWrites=true&w=majority",{useUnifiedTopology:true,useNewUrlParser:true});
 
 const NewApplData =require('./src/models/NewAppl')
@@ -131,16 +133,17 @@ app.get('/:pro',  (req, res) => {
           res.send(data);
       })
       })
- //   view single allocation
+ //   view many allocation
  app.get('/viewalloc/:pro',  (req, res) => {
   
     const pro = req.params.pro;
   
-    AllocData.findOne({"name":pro})
+    AllocData.find({"id":pro})
       .then((data)=>{
           
           if(data!==null){
             let error="success"
+            console.log(error)
             res.send({data,error});
           }
           else{
@@ -155,7 +158,7 @@ app.get('/:pro',  (req, res) => {
         console.log(error)
       })
       })
-    //   view single allocation
+    //   view many allocation
 
       app.put('/update',verifyToken2,(req,res)=>{
         // console.log(req.body)
@@ -592,8 +595,29 @@ app.post('/newalloc',verifyToken1,function(req,res){
                 })
                }
                else{
-                let error ="Trainer already allocated a batch";
-                res.send({error})
+                  
+                   enddate= new Date(data.enddate)
+                   startdate=new Date (NewAlloc.startdate)
+                   const diffTime = Math.abs(startdate - enddate)
+                   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                   console.log(diffDays)
+                   if(diffDays>0){
+                    var newAlloc = new AllocData( NewAlloc);
+                    newAlloc.save();
+                    sendMailAllocation(NewAlloc).then((result)=>{
+                        console.log("Email sent",result)
+                    })
+                    .catch((error)=>{
+                        console.log(error.message)
+                    })
+                            let error ="new allocation";
+                            res.status(200).send({error});
+                   }
+                   else{
+                    let error ="Trainer already allocated a batch";
+                    res.send({error})
+                   }
+                
                }
 
            })
