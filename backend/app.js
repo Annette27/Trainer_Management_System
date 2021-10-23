@@ -10,12 +10,14 @@ const appRoutes = require('./routes/apps')
 const trainersRoutes = require('./routes/trainers')
 const coursesRoutes = require('./routes/courses')
 const batchesRoutes = require('./routes/batches')
+const allocationssRoutes= require('./routes/allocations')
 
 mongoose.connect("mongodb+srv://userone:userone@libraryfiles.o5pxy.mongodb.net/TRAINERMANGEMENT?retryWrites=true&w=majority",{useUnifiedTopology:true,useNewUrlParser:true});
 
 const NewApplData =require('./src/models/NewAppl')
 const CourseData = require('./src/models/CourseData')
 const BatchData = require('./src/models/BatchData')
+const AllocData= require('./src/models/AllocData')
 
 
 var app = new express();
@@ -30,6 +32,7 @@ username="admin@gmail.com"
 password="Admin@123"
 
 app.use('/applications',appRoutes)
+app.use('/allocations',allocationssRoutes)
 app.use('/trainers',trainersRoutes)
 app.use('/courses',coursesRoutes)
 app.use('/batches',batchesRoutes)
@@ -128,9 +131,33 @@ app.get('/:pro',  (req, res) => {
           res.send(data);
       })
       })
+ //   view single allocation
+ app.get('/viewalloc/:pro',  (req, res) => {
+  
+    const pro = req.params.pro;
+  
+    AllocData.findOne({"name":pro})
+      .then((data)=>{
+          
+          if(data!==null){
+            let error="success"
+            res.send({data,error});
+          }
+          else{
+            let error ="No Allocations to view"
+            console.log("error")
+           res.send({data,error})
+          }
+          
+      })
+      .catch(()=>{
+        let error ="error new"
+        console.log(error)
+      })
+      })
+    //   view single allocation
 
-
-      app.put('/update',(req,res)=>{
+      app.put('/update',verifyToken2,(req,res)=>{
         // console.log(req.body)
         id=req.body._id
         names= req.body.name
@@ -163,26 +190,7 @@ app.get('/:pro',  (req, res) => {
 
 
 
-// app.post('/profile',function(req,res){
-//     let user = req.body
-//     LoginData.findOne({password:user.pro})
-//     .then((data)=>{
-//         res.send(data);
-//     })
-// })
 
-
-
-//     if(username != userData.uname){
-//       res.status(401).send("invalid username")
-//     }else if(password != userData.password){
-//       res.status(401).send("invalid password")
-//    }else{
-
-//     let payload = {subject:username+password};
-//     let token = jwt.sign(payload,'secretkey');
-//   res.status(200).send({token})
-//     }
 
 
 // delete Appl
@@ -210,14 +218,7 @@ app.delete('/remove/:id',verifyToken1,(req,res)=>{
     })
 
 })
-// app.get('/:id',  (req, res) => {
-  
-//     const id = req.params.id;
-//       LoginData.findOne({"_id":id})
-//       .then((profile)=>{
-//           res.status(200).send({profile});
-//       });
-//     })
+
 
 // delete course
 app.delete('/delete/:id',verifyToken1,(req,res)=>{
@@ -246,77 +247,33 @@ app.delete('/delete/:id',verifyToken1,(req,res)=>{
     })
 
 })
-// Add course
-// app.post('/course',verifyToken1,(req,res)=>{
-//     const name=req.body.batch.course
-//     const batch = req.body.batch.name
-//     const courseid = req.body.batch.courseid
 
-//     CourseData.findOne({"name":req.body.batch.course})
-//     .then((data)=>{
-//         if(data==null){
-//             var course={
-//                 name:req.body.batch.course,
-//                 courseid:req.body.batch.courseid
-//              }
-//              var course = CourseData(course);
-//              course.save();
-//              // res.send();
-//               var batch = {
-//                  course:req.body.batch.course,
-//                  name:req.body.batch.name,
-//                 courseid:req.body.batch.courseid
-    
-//              }
-//              var batch = BatchData(batch);
-//              batch.save();
-//              let error ="Batch added"
-    
-//              res.send({error});
-//         }
-//         else{
-//             CourseData.findOne({"courseid":req.body.batch.courseid})
-//             .then((data)=>{
-//                 if(data==null){
-//                let error = "Course ID incorrect"
-//             //    console.log(error)
-//                res.send({error});
-//                 }
-//                 else{
-//                     BatchData.findOne({"name":req.body.batch.name})
-//                     .then((data)=>{
-//                         if(data==null){
-//                             var batch = {
-//                                                courseid:req.body.batch.courseid,
-//                                                course:req.body.batch.course,
-//                                                name:req.body.batch.name
-//                                            }
-//                                         //    console.log(batch)
-                               
-//                                            var batch = BatchData(batch);
-//                                            batch.save();
-//                                            let error = "Batch added"
-                               
-//                                            res.send({error});
-//                         }
-//                         else{
-//                             let error = "Batch already exixts"
-//                                     //    console.log(error)
-//                                        res.send({error});
-//                         }
-//                     })
-//                 }
-//             })
+// delete allocation
+app.delete('/deletealloc/:id',verifyToken1,(req,res)=>{
+    const id = req.params.id;
+    AllocData.findOne({"_id":id})
+    .then((data)=>{
+            if(data!==null){
+                sendMailDeleteAlloc(data).then((result)=>{
+                    console.log("Email sent",result)
+                })
+                .catch((error)=>{
+                    console.log(error.message)
+                })
+                AllocData.findByIdAndRemove({"_id":id})
+                .then((data)=>{
 
-
-//                    } 
+                    res.send();
+                })
+            }
         
-//     })
-  
-    
-//   })
+    })
 
-// Add course end
+})
+
+// delete allocation end
+
+
 
 // Add course
 app.post('/course',verifyToken1,(req,res)=>{
@@ -384,47 +341,6 @@ app.post('/course',verifyToken1,(req,res)=>{
   })
 
 // Add course end
-// Approve trainer
-// app.post('/trainer',(req,res)=>{
-    
-//     const id=req.body.trainer._id
-     
-//     trainer=
-//         {
-//             name: req.body.trainer.name,
-//             email: req.body.trainer.email,
-//             phone: req.body.trainer.phone,
-//             address: req.body.trainer.address,
-//             highestQualification: req.body.trainer.highestQualification,
-//             skillSet: req.body.trainer.skillSet,
-//             companyName: req.body.trainer.companyName,
-//             designation: req.body.trainer.designation,
-//             course: req.body.trainer.course,
-//             id: req.body.trainer.id,
-//             password: req.body.trainer.password,
-//             image: req.body.trainer.image,
-//             imagepath: req.body.trainer.imagepath,
-//             type:req.body.trainer.type
-
-//         }
-//         // trainer.id=getid()
-//         sendMail(trainer).then((result)=>{
-//             console.log("Email sent",result)
-//         })
-//         .catch((error)=>{
-//             console.log(error.message)
-//         })
-//     var trainer = LoginData(trainer);
-//     trainer.save();
-//     NewApplData.findByIdAndDelete({"_id":id})
-// .then(()=>{
-   
-//     res.send();
-// })
-    
-//   })
-
-// Approve trainer end
 
 
 // Approve trainer new
@@ -623,7 +539,67 @@ app.post('/newappl',function(req,res){
 
   
 });
+// neww allocation
+app.post('/newalloc',verifyToken1,function(req,res){
+   
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS");
+     NewAlloc=
+        {
+            name: req.body.allocate.name,
+            email: req.body.allocate.email,
+            phone: req.body.allocate.phone,
+            address: req.body.allocate.address,
+            highestQualification: req.body.allocate.highestQualification,
+            skillSet: req.body.allocate.skillSet,
+            companyName: req.body.allocate.companyName,
+            designation: req.body.allocate.designation,
+            course: req.body.allocate.course,
+            id: req.body.allocate.id,
+            password: req.body.allocate.password,
+            image: req.body.allocate.image,
+            imagepath: req.body.allocate.imagepath,
+            type:req.body.allocate.type,
+            startdate:req.body.allocate.startdate,
+            enddate:req.body.allocate.enddate,
+            time:req.body.allocate.time,
+            courseid:req.body.allocate.courseid,
+            batch:req.body.allocate.batch,
+            venue:req.body.allocate.venue
+        }
+     
+           AllocData.findOne({id:NewAlloc.id})
+           .then((data)=>{
+               if(data==null){
+                AllocData.findOne({batch:NewAlloc.batch})
+                .then((data)=>{
+                    if(data==null){
+                        var newAlloc = new AllocData( NewAlloc);
+                        newAlloc.save();
+                        sendMailAllocation(NewAlloc).then((result)=>{
+                            console.log("Email sent",result)
+                        })
+                        .catch((error)=>{
+                            console.log(error.message)
+                        })
+                                let error ="new allocation";
+                                res.status(200).send({error});
+                    }
+                    else{
+                        let error ="batch allocated to another trainer";
+                             res.send({error})
+                    }
+                })
+               }
+               else{
+                let error ="Trainer already allocated a batch";
+                res.send({error})
+               }
 
+           })
+         
+});
+// new allocation end
 
 
 const nodemailer = require('nodemailer')
@@ -668,7 +644,75 @@ catch(error){
 return error
 }
 }
-
+async function sendMailAllocation(NewAlloc){
+    try{
+        const accessToken = await oAuth2Client.getAccessToken()
+        const transport = nodemailer.createTransport({
+    
+            service:'gmail',
+            auth:{
+                type:'OAuth2',
+                user:'sreeprasanth863@gmail.com',
+                clientId:CLIENT_ID,
+                clientSecret:CLIENT_SECRET,
+                refreshToken:REFRESH_TOKEN,
+                accessToken:accessToken
+            }
+        })
+    
+         mailOptions = {
+            from:'sreeprasanth863@gmail.com',
+            to:NewAlloc.email,
+            subject:'Batch Allocation details',
+            text: 'Your batch allocation details is as follows  '+
+            ' Course: '+NewAlloc.course+
+            '  Course Id: '+NewAlloc.courseid+
+            ' batch: '+ NewAlloc.batch+
+            ' start date: '+ NewAlloc.startdate+
+            ' end date: '+ NewAlloc.enddate+
+            ' time: '+NewAlloc.time+
+            ' venue: '+NewAlloc.venue
+            
+    
+        }
+    const result = await transport.sendMail(mailOptions)
+    return result
+    }
+    catch(error){
+    return error
+    }
+    }
+    async function sendMailDeleteAlloc(data){
+        try{
+            const accessToken = await oAuth2Client.getAccessToken()
+            const transport = nodemailer.createTransport({
+        
+                service:'gmail',
+                auth:{
+                    type:'OAuth2',
+                    user:'sreeprasanth863@gmail.com',
+                    clientId:CLIENT_ID,
+                    clientSecret:CLIENT_SECRET,
+                    refreshToken:REFRESH_TOKEN,
+                    accessToken:accessToken
+                }
+            })
+        
+             mailOptions = {
+                from:'sreeprasanth863@gmail.com',
+                to:data.email,
+                subject:'Batch Allocation Change',
+                text: 'There is a change in the sheduled Batch allocation.New allocatio will be initimated to you soon'
+                
+        
+            }
+        const result = await transport.sendMail(mailOptions)
+        return result
+        }
+        catch(error){
+        return error
+        }
+        }
 async function sendMailDecline(trainer){
     try{
         const accessToken = await oAuth2Client.getAccessToken()
