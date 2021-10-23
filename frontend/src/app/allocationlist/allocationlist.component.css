@@ -1,0 +1,33 @@
+
+
+.e-grid .e-gridheader {
+    border:2px solid green;
+    background: rgba(0, 0, 0, 0.589);
+}
+.e-grid .e-column {
+    border:2px solid rgb(3, 3, 3);
+    background: rgba(0, 0, 0, 0.589);
+
+}
+
+
+.e-grid .e-headercelldiv {
+    font-size: 30px;
+ }
+ .e-grid  {
+    background: rgba(0, 0, 0, 0.589);
+    border:2px solid rgb(3, 3, 3)
+ }
+ .trial{
+     color: rgb(31, 29, 29);
+     
+     font-size: 25px;
+     font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+     padding: 20px;
+ }
+
+
+ 
+
+
