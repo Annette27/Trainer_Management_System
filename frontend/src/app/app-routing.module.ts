@@ -10,6 +10,9 @@ import { AddcoursesComponent } from './addcourses/addcourses.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { TrainerprofileComponent } from './trainerprofile/trainerprofile.component';
 import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
+import { AllocateComponent } from './allocate/allocate.component';
+import { AllocationlistComponent } from './allocationlist/allocationlist.component';
+import { ViewallocationComponent } from './viewallocation/viewallocation.component';
 
 const routes: Routes = [{path:'', component:HomeComponent},
 {path:'home', component:HomeComponent},
@@ -20,7 +23,10 @@ const routes: Routes = [{path:'', component:HomeComponent},
 {path:'trainers', component:TrainerlistComponent,canActivate:[AuthGuard]},
 {path:'courses', component:AddcoursesComponent,canActivate:[AuthGuard]},
 {path:'profile',component:TrainerprofileComponent},
-{path:'update',component:UpdateprofileComponent}];
+{path:'update',component:UpdateprofileComponent},
+{path:'allocate',component:AllocateComponent},
+{path:'allocatelist',component:AllocationlistComponent},
+{path:'viewalloc',component:ViewallocationComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
