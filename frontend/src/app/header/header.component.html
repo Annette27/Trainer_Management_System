@@ -12,8 +12,10 @@
         <a *ngIf='!(authservice.loggedin()||authservice.loggedUser())' routerLink='login'><button class="btn btn-outline-light me-2 glyphicon glyphicon-home" type="button">LogIn</button></a>
         <a   *ngIf='!(authservice.loggedin()||authservice.loggedUser())' routerLink='signup'> <button class="btn btn-outline-light me-2 glyphicon glyphicon-home" type="button">SignUp</button></a>
         <a   *ngIf='authservice.loggedUser()' routerLink='profile'> <button class="btn btn-outline-light me-2 glyphicon glyphicon-home" type="button">Profile</button></a>
+        <a   *ngIf='authservice.loggedUser()' routerLink='viewalloc'> <button class="btn btn-outline-light me-2 glyphicon glyphicon-home" type="button">My Batches</button></a>
         <a  *ngIf='authservice.loggedin()' routerLink='approve'> <button class="btn btn-outline-light me-2 glyphicon glyphicon-home" type="button"> New Enrollment Application</button></a>
         <a  *ngIf='authservice.loggedin()' routerLink='trainers'> <button class="btn btn-outline-light me-2 glyphicon glyphicon-home" type="button"> Trainers List</button></a>
+        <a  *ngIf='authservice.loggedin()' routerLink='allocatelist'> <button class="btn btn-outline-light me-2 glyphicon glyphicon-home" type="button"> Allocation List</button></a>
         <a  *ngIf='authservice.loggedin()' routerLink='courses'> <button class="btn btn-outline-light me-2 glyphicon glyphicon-home" type="button"> Add Courses</button></a>
         <a *ngIf='authservice.loggedin()||authservice.loggedUser()' routerLink='logout' (click)='logOut()'> <button class="btn btn-outline-light me-2 glyphicon glyphicon-home" type="button">Log Out</button></a>
       </div>
