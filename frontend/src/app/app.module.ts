@@ -28,6 +28,9 @@ import { TrainerprofileComponent } from './trainerprofile/trainerprofile.compone
 import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
 import { ApplistService } from './applist.service';
 import { ProfileService } from './profile.service';
+import { AllocateComponent } from './allocate/allocate.component';
+import { AllocationlistComponent } from './allocationlist/allocationlist.component';
+import { ViewallocationComponent } from './viewallocation/viewallocation.component';
 
 
 @NgModule({
@@ -43,7 +46,10 @@ import { ProfileService } from './profile.service';
     AddcoursesComponent,
     AboutusComponent,
     TrainerprofileComponent,
-    UpdateprofileComponent
+    UpdateprofileComponent,
+    AllocateComponent,
+    AllocationlistComponent,
+    ViewallocationComponent
   ],
   imports: [
     BrowserModule,
