@@ -1,0 +1,136 @@
+
+  <div class="body">
+    <div class="container" >
+ <div class="row box"  >
+   <div class=" col-lg-3" ></div>
+   <div   class="trial col-lg-6" style="border: 1px solid black;" >
+ <form  [formGroup]="allocateForm" (ngSubmit)="newAllocation()" >
+  
+    
+    <br>
+       <h2 style="text-align: center; font-family: monospace; color: white; font-weight: bold;" >ALLOCATE COURSE</h2><br>
+      
+       <div  style="margin:0% 5% 0% 10%; color: white;font-weight: bold;" >
+           <h4>Name: {{allocate.name}}</h4>
+           <hr>
+    
+         </div>
+       <div  style="margin:0% 5% 0% 10%; color: white; font-weight: bold;" >
+         <h5>ID: {{allocate.id}}</h5>
+<hr>
+        
+       </div>
+       <div  style="margin:0% 5% 0% 10%; color: white; font-weight: bold;" >
+        <h5>Type of Employment: {{allocate.type}}</h5>
+<hr>
+       
+      </div>
+       <div   style="margin:0% 5% 0% 10%; color:white;font-weight: bold;" >
+         <h5>Course: {{allocate.course}}</h5>
+         <hr>
+
+         
+       </div>
+       <div   style="margin:0% 5% 0% 10%;color: white;font-weight: bold;" class="form-group">
+         <label style="font-family: 'Merriweather', serif; font-size:15px" for="startdate" >Start date</label>
+         <input type="date" id="startdate" class="form-control" name="startdate"  [(ngModel)]="allocate.startdate" formControlName="startdate"  >
+        
+         <!-- <div *ngIf="(f.address.touched||f.address.dirty) && f.address.errors"> 
+            <small class="text-danger" *ngIf="f.address.errors.required"  >Address is required</small>
+ 
+         </div>
+         <small class="text-danger" *ngIf="f.address.dirty && f.address.hasError('whitespace')"  >Enter valid address</small> -->
+ 
+       </div>
+       <br>
+       <div   style="margin:0% 5% 5% 10%;color: white;font-weight: bold;" class="form-group">
+         <label style="font-family: 'Merriweather', serif; font-size:15px" for="enddate" >End date</label>
+         <input type="date" id="enddate" class="form-control" name="enddate" [(ngModel)]="allocate.enddate"   formControlName="enddate"  >
+         <!-- <fa-icon [icon]="faUserGraduate" style="position: relative;
+         top: -30px; left: 10px;"></fa-icon> -->
+         <!-- <div *ngIf="(f.highestQualification.touched||f.highestQualification.dirty) && f.highestQualification.errors"> 
+         <small class="text-danger" *ngIf="f.highestQualification.errors.required"  > require field</small>
+ 
+         </div>
+         <small class="text-danger" *ngIf="f.highestQualification.dirty && f.highestQualification.hasError('whitespace')"  >Enter valid details</small> -->
+ 
+       </div>
+      
+       <div  style="margin:0% 5% 5% 10%; color: white;font-weight: bold;" class="form-group">
+         <label style="font-family: 'Merriweather', serif; font-size:15px" for="time" >Time</label>
+         <input type="time" id="time" class="form-control" name="time" [(ngModel)]="allocate.time" formControlName="time"  >
+         <!-- <div *ngIf="(f.skillSet.touched||f.skillSet.dirty) && f.skillSet.errors"> 
+         <small class="text-danger" *ngIf="f.skillSet.errors.required"  >Skill Set is required</small>
+ 
+         </div>
+         <small class="text-danger" *ngIf="f.skillSet.dirty && f.skillSet.hasError('whitespace')"  >Enter valid details</small> -->
+ 
+       </div>
+       <div   style="margin:0% 5% 5% 10%; color: white; font-weight: bold;" class="form-group">
+         <label style="font-family: 'Merriweather', serif; font-size:15px" for="venue" >Venue</label>
+         <input type="text" id="venue" class="form-control" name="venue" [(ngModel)]="allocate.venue"  formControlName="venue"  >
+         <div *ngIf="(f.venue.touched||f.venue.dirty) && f.venue.errors"> 
+         <small class="text-danger" *ngIf="f.venue.errors.required"  >required field</small>
+ 
+         </div>
+         <small class="text-danger" *ngIf="f.venue.dirty && f.venue.hasError('whitespace')"  >Enter valid details</small>
+ 
+       </div>
+      
+       
+       <div   style="margin:0% 5% 5% 10%; color: white;font-weight: bold;" class="form-group">
+        <label style="font-family: 'Merriweather', serif; font-size:15px" for="courseid" >Course ID</label>
+        <select type="text" name="courseid" class="form-control" id="courseid"  (change)="onselect($event)" formControlName="courseid" [(ngModel)]="allocate.courseid" required >
+          <option value="" >Select course id</option>
+           
+          <option *ngFor="let i of courses" value={{i.courseid}}>{{i.courseid}}</option>
+        </select>
+        <!-- <div *ngIf="(f.course.touched||f.course.dirty) && f.course.errors"> 
+        <small class="text-danger" *ngIf="f.course.errors.required"  >Select course</small>
+
+        </div> -->
+      </div>
+      <div   style="margin:0% 5% 5% 10%; color: white;font-weight: bold;" class="form-group">
+        <label style="font-family: 'Merriweather', serif; font-size:15px" for="batch" >Batch</label>
+        <select type="text" name="batch" class="form-control" id="batch" formControlName="batch" [(ngModel)]="allocate.batch" required >
+          <option value="" >Select batch</option>
+           
+          <option *ngFor="let i of batches" value={{i.name}}>{{i.name}}</option>
+        </select>
+        <!-- <div *ngIf="(f.course.touched||f.course.dirty) && f.course.errors"> 
+        <small class="text-danger" *ngIf="f.course.errors.required"  >Select course</small>
+
+        </div> -->
+      </div>
+ 
+      
+    <br>
+    <br>
+    <br>
+              
+
+ 
+                 
+       
+        
+        <div style="text-align: center;padding-top: 15px;">
+         <button id="btn1"  [disabled]="allocateForm.invalid" class="btn btn-primary">Submit</button>
+ 
+        </div>
+     
+       <br>
+     
+       
+   </form>
+ </div>
+   <div class="col-lg-3" ></div>
+ 
+ 
+ </div>
+ 
+ 
+ </div>
+   
+ </div>
+
+
