@@ -6,6 +6,7 @@ import {map} from 'rxjs/operators';
 import {TrainerModel} from './models/trainers'
 import {CourseModel} from './models/courses'
 import {BatchModel} from './models/batch'
+import { AllocationModel } from './models/allocation';
 
 
 @Injectable({
@@ -16,11 +17,13 @@ export class ApplistService {
   trainers:TrainerModel[]=[];
   courses:CourseModel[]=[];
   batches:BatchModel[]=[];
+  allocations:AllocationModel[]=[];
 
   private apps$ = new Subject<ApplicationModel[]>()
   private trainers$ = new Subject<TrainerModel[]>()
   private courses$ = new Subject<CourseModel[]>()
   private batches$ = new Subject<BatchModel[]>()
+  private allocations$ = new Subject<AllocationModel[]>()
 
 
   constructor( private http :HttpClient) { }
@@ -34,7 +37,11 @@ deleteBatch(id:any){
   
   
     }
-
+    deleteAllocation(id:any){
+      return this.http.delete("http://localhost:3000/deletealloc/"+id)
+      
+      
+        }
   addtrainers(item){
     return this.http.post("http://localhost:3000/trainer",{"trainer":item})
     
@@ -129,5 +136,24 @@ getTrainersStream(){
   return this.trainers$.asObservable();
 
 }
+getAllocations(){
+  this.http
+  .get<{allocations:AllocationModel[]}>("http://localhost:3000/allocations")
+  .pipe(
+    map((allocationData)=>{
+      return allocationData.allocations;
+    })
+  )
+  .subscribe((allocations)=>{
+    this.allocations = allocations;
+    // console.log(books)
+    this.allocations$.next(this.allocations);
+  })
 
+
+}
+getAllocationsStream(){
+  return this.allocations$.asObservable();
+
+}
 }
