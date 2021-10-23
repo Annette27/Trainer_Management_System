@@ -12,6 +12,11 @@ export class NewapplistService {
     return this.http.post<any>("http://localhost:3000/newappl",{"trainer":item});
     
   }
+  newallocation(item:any){
+    // console.log(item)
+    return this.http.post<any>("http://localhost:3000/newalloc",{"allocate":item});
+    
+  }
   // idNum(){
   //   return this.http.get<any>("http://localhost:3000/id")
     
