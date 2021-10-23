@@ -8,6 +8,9 @@ export class ProfileService {
   logiUser(pro:any){
     return this.Http.get("http://localhost:3000/"+pro)
   }
+  UserAlloc(pro:any){
+    return this.Http.get("http://localhost:3000/viewalloc/"+pro)
+  }
   editProfile(Profile:any)
   {
     console.log('client update')
