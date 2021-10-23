@@ -1,0 +1,94 @@
+<div class="container">
+    <div class="main-body">
+    <h3>Batch Allocation Details</h3>
+          <!-- Breadcrumb -->
+          <!-- <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              
+              <li class="breadcrumb-item"   (click)="logoutuser()" *ngIf="authservice.loggedUser()"><a >Logout</a></li>
+              <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
+              <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+            </ol>
+          </nav> -->
+          <!-- /Breadcrumb -->
+    
+          <div class="row gutters-sm">
+                  <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Course</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <h6>{{allocate.course}}</h6>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Course id</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <h6>{{allocate.courseid}}</h6>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Batch</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <h6>{{allocate.batch}}</h6>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Start Date</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <h6>{{allocate.startdate}}</h6>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">End Date</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <h6>{{allocate.enddate}}</h6>
+                      
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Time</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <h6>{{allocate.time}}</h6>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Venue</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <h6>{{allocate.venue}}</h6>
+                    </div>
+                  </div>
+                  <hr>
+                  
+                  <div class="row">
+                    <!-- <div class="col-sm-12">
+                      <a class="btn btn-info " (click)="editProfile(profile)">Edit</a>
+                      <button class="btn btn-success" style="cursor:pointer" *ngIf="authservice.loggedUser()" (click)="editProfile(Profile)"  style="margin-left: 20px;"> Edit</button> 
+                    
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+
+            
