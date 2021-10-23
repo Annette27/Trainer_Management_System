@@ -95,7 +95,7 @@
         <select type="text" name="batch" class="form-control" id="batch" formControlName="batch" [(ngModel)]="allocate.batch" required >
           <option value="" >Select batch</option>
            
-          <option *ngFor="let i of batches" value={{i.name}}>{{i.name}}</option>
+          <option *ngFor="let i of batches1" value={{i.name}}>{{i.name}}</option>
         </select>
         <!-- <div *ngIf="(f.course.touched||f.course.dirty) && f.course.errors"> 
         <small class="text-danger" *ngIf="f.course.errors.required"  >Select course</small>
