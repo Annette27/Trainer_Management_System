@@ -39,6 +39,8 @@ export class AllocateComponent implements OnInit {
         }
     courses:CourseModel[]=[];
     batches:BatchModel[]=[];
+    batches1:BatchModel[]=[];
+
     private courseSubscription : Subscription;
     private batchSubscription : Subscription;
 
@@ -53,7 +55,7 @@ onselect(batch){
 console.log(this.allocate.course)
 
   
-this.batches= this.batches.filter(e=> e.courseid==batch.target.value);
+this.batches1= this.batches.filter(e=> e.courseid==batch.target.value);
 }
   constructor(private fb:FormBuilder, private router:Router, private newAppList:NewapplistService,private AppService :ApplistService,private profservice:ProfileService) {}
 
@@ -118,8 +120,8 @@ console.log(this.batches)
 this.profservice.logiUser(localStorage.getItem('allocationId')).subscribe((data)=>{console.log(data)
   console.log(JSON.parse(JSON.stringify(data)))
   this.allocate=JSON.parse(JSON.stringify(data));
-  console.log(this.courses)
-  console.log(this.allocate.course)
+  // console.log(this.courses)
+  // console.log(this.allocate.course)
 this.courses= this.courses.filter(e=>e.name==this.allocate.course)
   
 })
