@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
     if(res.token1){
       localStorage.setItem('token1',res.token1)
       localStorage.setItem('data',res.data._id)
+      localStorage.setItem('foralloc',res.data.name)
       this.router.navigate(['home'])
       console.log("user");
     }
