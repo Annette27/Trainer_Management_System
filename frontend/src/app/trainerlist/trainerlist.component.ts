@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { ApplistService } from '../applist.service';
 import{FilterSettingsModel} from '@syncfusion/ej2-angular-grids'
 import {CommandModel,CommandClickEventArgs,GridComponent,Column,IRow,EditSettingsModel} from '@syncfusion/ej2-angular-grids';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-trainerlist',
@@ -41,7 +42,7 @@ export class TrainerlistComponent implements OnInit {
   public commands:CommandModel[];
   trainers:TrainerModel[];
   private appsSubscription : Subscription;
-  constructor(private AppService :ApplistService) { }
+  constructor(private AppService :ApplistService, private router:Router) { }
 
   ngOnInit(): void {
     this.AppService.getTrainers();
@@ -57,7 +58,7 @@ export class TrainerlistComponent implements OnInit {
     let id=JSON.parse(JSON.stringify(args.rowData))._id
     localStorage.setItem("allocationId",id);
     alert("Allocate")
-  
+    this.router.navigate(['allocate'])
   
 }
 
