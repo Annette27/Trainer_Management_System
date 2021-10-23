@@ -1,94 +1,115 @@
-<div class="container">
-    <div class="main-body">
-    <h3>Batch Allocation Details</h3>
-          <!-- Breadcrumb -->
-          <!-- <nav aria-label="breadcrumb" class="main-breadcrumb">
-            <ol class="breadcrumb">
-              
-              <li class="breadcrumb-item"   (click)="logoutuser()" *ngIf="authservice.loggedUser()"><a >Logout</a></li>
-              <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
-              <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-            </ol>
-          </nav> -->
-          <!-- /Breadcrumb -->
-    
-          <div class="row gutters-sm">
-                  <div class="col-md-8">
-              <div class="card mb-3">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Course</h6>
+            
+              <section>
+                <div class="banner-main" alt="#">
+                    <!-- <img src="../../assets/img/checklist.jpg" alt="#"/> -->
+                    <div class="container">
+                        <h1><div class="black" style="text-align: center; font-size: 20px; font-family:fantasy; border: cornsilk; box-sizing: inherit; color: black; font-weight: bold; padding-top: 2px;">My Batches</div></h1>
+                        <!-- <div class="button_section"> <a class="main_bt" href="#">Read More</a>  </div> -->
+                        <div class="card" style=" height: 100vh; padding-top: auto;">
+                        
+                        <div class="card-body" style="background-color: rgba(19, 18, 17, 0.733); border: 1px solid white;" >
+                            <div class="table-responsive" >
+                                <table class="table" style="color: white; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                                    <thead>
+                                        <tr>
+                                          
+                                            <th>Course Id</th>
+                                            <th>Batch</th>
+                                            <th>Start Date</th>
+                                            <th>End Date</th>
+                                            <th>Time</th>
+                                            <th>Venue</th>
+                                            
+                        
+                        
+                                        </tr>
+                                    </thead>
+                                        <tbody>
+                                            <tr *ngFor='let i of allocations'>
+                                               
+                                                 <td >{{i.courseid}}</td>
+                                                 <td>{{i.batch}}</td>
+                                                 <td>{{i.startdate}}</td>
+                                                 <td>{{i.enddate}}</td>
+                                                 <td>{{i.time}}</td>
+                                                 <td>{{i.venue}}</td>
+                                                 
+                                                                    
+                                            </tr>
+                                        </tbody>
+                                 
+                        </table>
+                               
+                        
+                            </div>
+                        
+                        </div>
+                        </div>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                      <h6>{{allocate.course}}</h6>
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Course id</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      <h6>{{allocate.courseid}}</h6>
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Batch</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      <h6>{{allocate.batch}}</h6>
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Start Date</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      <h6>{{allocate.startdate}}</h6>
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">End Date</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      <h6>{{allocate.enddate}}</h6>
-                      
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Time</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      <h6>{{allocate.time}}</h6>
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Venue</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      <h6>{{allocate.venue}}</h6>
-                    </div>
-                  </div>
-                  <hr>
-                  
-                  <div class="row">
-                    <!-- <div class="col-sm-12">
-                      <a class="btn btn-info " (click)="editProfile(profile)">Edit</a>
-                      <button class="btn btn-success" style="cursor:pointer" *ngIf="authservice.loggedUser()" (click)="editProfile(Profile)"  style="margin-left: 20px;"> Edit</button> 
                     
-                    </div> -->
-                  </div>
+                    
+                
+            
                 </div>
-              </div>
-
+                
+            </section>
+            <!-- <div class="card" style=" height: 100vh;">
+                <div class="card-header" style=" background-color: rgba(19, 18, 17, 0.733); text-align: center;font-size: 25px; font-weight: bold; padding: 20px;border:1px solid white ; font-family: 'Times New Roman', Times, serif; color: white;">
+                    List of New Applicants
+             
+                 </div>
+            <div class="card-body" style="background-color: rgba(19, 18, 17, 0.733); border: 1px solid white;" >
+                <div class="table-responsive" >
+                    <table class="table" style="color: white; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <button class="btn btn-primary"
+                                    (click)="toggle()">{{showImage? 'Hide':'Show'}} Photo</button>
+                                </th>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Highest Qualification</th>
+                                <th>Skill Set</th>
+                                <th>Company Name</th>
+                                <th>Designation</th>
+                                <th>Course</th>
+                                <th>Employment Type</th>
+            
+            
+                            </tr>
+                        </thead>
+                            <tbody>
+                                <tr *ngFor='let i of applications'>
+                                    <td><img *ngIf='showImage' [src]='i.imagepath' [style.width.px]='imagewidth' [style.height.px]='imageheight' [style.margin.px]='imagemargin'></td>
+                                    Interpolation
+                                    <td >{{i.name}}</td>
+                                     <td >{{i.address}}</td>
+                                     <td>{{i.highestQualification}}</td>
+                                     <td>{{i.skillSet}}</td>
+                                     <td>{{i.companyName}}</td>
+                                     <td>{{i.designation}}</td>
+                                     <td>{{i.course}}</td>
+                                     <td> <select type="type" name="type" class="form-control" id="type" [(ngModel)]="i.type" required >
+                                      <option value="Internal">Internal</option>
+                                      <option value="Empanelled">Empanelled</option>
+                                      <option value="External">External</option>
+                                  </select> </td>
+                                  <td><button class = "btn btn-success" (click)="approve(i)"   style="margin-left: 20px;">APPROVE</button></td>
+                                  <td><button class = "btn btn-danger" (click)="deleteApp(i)" style="margin-left: 20px;">DELETE</button></td>
+                                   <td><button class = "btn btn-warning" (click)="editProduct(i)" *ngIf='auth.loggedIn()'  style="margin-left: 20px;">EDIT</button></td>
+                                     <td><button class = "btn btn-warning" (click)="deleteProduct(i)" *ngIf='auth.loggedIn()' style="margin-left: 20px;">DELETE</button></td> -->
+            
+                                <!-- </tr>
+                            </tbody>
+                     
+            </table>
+                   
+            
+                </div>
+            
+            </div>
+            </div> --> 
+            
+                          
             
