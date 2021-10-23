@@ -16,9 +16,9 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('approveId');
     localStorage.removeItem('allocationId');
     localStorage.removeItem('data')
-
-
-
+    localStorage.removeItem('foralloc')
+    localStorage.removeItem('deletealloc')
+    localStorage.removeItem('editProfileId')
     this.router.navigate(['/'])
 
   }
