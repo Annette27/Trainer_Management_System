@@ -609,7 +609,7 @@ app.post('/newalloc',verifyToken1,function(req,res){
                   
                    enddate= new Date(data.enddate)
                    startdate=new Date (NewAlloc.startdate)
-                   const diffTime = Math.abs(startdate - enddate)
+                    const diffTime = Math.floor(startdate - enddate)
                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
                    console.log(diffDays)
                    if(diffDays>0){
