@@ -230,21 +230,32 @@ app.delete('/delete/:id',verifyToken1,(req,res)=>{
     .then((data)=>{
             let course =data.course
             BatchData.findByIdAndDelete({"_id":id})
-            .then(()=>{
-                BatchData.findOne({"course":course})
+            .then((data)=>{
+                AllocData.findOneAndDelete({"courseid":data.courseid})
                 .then((data)=>{
-                    if(data==null){
-                        CourseData.findOneAndRemove({"name":course})
-                        .then(()=>{
-                         res.send();
+                    sendMailDeleteAlloc(data).then((result)=>{
+                        console.log("Email sent",result)
+                    })
+                    .catch((error)=>{
+                        console.log(error.message)
+                    })
+                    res.send();
 
-                        })
-                    }
-                    else{
-                res.send();
+                   })
+                // BatchData.findOne({"course":course})
+                // .then((data)=>{
+                //     if(data==null){
+                //         CourseData.findOneAndRemove({"name":course})
+                //         .then(()=>{
+                //          res.send();
 
-                    }
-                })
+                //         })
+                //     }
+                //     else{
+                // res.send();
+
+                //     }
+                // })
            })
         
     })
