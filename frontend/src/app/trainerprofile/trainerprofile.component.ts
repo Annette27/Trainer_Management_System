@@ -29,7 +29,8 @@ export class TrainerprofileComponent implements OnInit {
 pro = localStorage.getItem('data');
   ngOnInit(): void {
     //console.log(localStorage.getItem('data'))
-    this.profservice.logiUser(localStorage.getItem('data')).subscribe((data)=>{console.log(data)
+    this.profservice.logiUser(localStorage.getItem('data')).subscribe((data)=>{
+      // console.log(data)
       this.Profile=JSON.parse(JSON.stringify(data));
       
     })
