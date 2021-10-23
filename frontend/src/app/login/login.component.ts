@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     if(res.token1){
       localStorage.setItem('token1',res.token1)
       localStorage.setItem('data',res.data._id)
-      localStorage.setItem('foralloc',res.data.name)
+      localStorage.setItem('foralloc',res.data.id)
       this.router.navigate(['home'])
       console.log("user");
     }
@@ -42,48 +42,5 @@ export class LoginComponent implements OnInit {
   })
  }
 }
-//     if(res.token){
-//       localStorage.setItem('token',res.token)
-        
-//       this.router.navigate(['/'])
-//       alert("success")
-//       }
-//       if(res.token1){
-//         localStorage.setItem('token1',res.token1)
-//         this.router.navigate(['/'])
-//         console.log("user");
-//       }
-//       else if(res.error=="Invalid User"){
-//         alert("Invalid User")
-//       }
-//      else  if(res.error=="Invalid password"){
-//         alert("Invalid Password")
-//       }
-      
-//     })
-     
-//     }
-//   }
-// }
-//     this.authservice.loginUser(this.user)
-//     .subscribe(
-//       res=>{
-//         if(res.token)
-//         localStorage.setItem('token',res.token)
-//         this.router.navigate([''])
-//       }
-//       if(res.token1){
-//         localStorage.setItem('token1',res.token1)
-//         this.router.navigate(['/'])
-//         console.log("user");
-//       }
-//       else if(res.error=="Invalid User"){
-//         alert("Invalid User")
-//       }
-//      else  if(res.error=="Invalid password"){
-//         alert("Invalid Password")
-//       }
-//     )
-//   }
-// }
+
   
