@@ -24,9 +24,9 @@ const routes: Routes = [{path:'', component:HomeComponent},
 {path:'courses', component:AddcoursesComponent,canActivate:[AuthGuard]},
 {path:'profile',component:TrainerprofileComponent},
 {path:'update',component:UpdateprofileComponent},
-{path:'allocate',component:AllocateComponent},
-{path:'allocatelist',component:AllocationlistComponent},
-{path:'viewalloc',component:ViewallocationComponent}];
+{path:'allocate',component:AllocateComponent,canActivate:[AuthGuard]},
+{path:'allocatelist',component:AllocationlistComponent,canActivate:[AuthGuard]},
+{path:'viewalloc',component:ViewallocationComponent,canActivate:[AuthGuard]}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
