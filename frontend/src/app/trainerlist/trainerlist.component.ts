@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
   selector: 'app-trainerlist',
   // templateUrl: './trainerlist.component.html',
   template:`
-  <div margin-top=20 align='Center' style= "background-image:url('../../assets/img/it.jpg'); background-color: rgba(0, 0, 0, 0.685);">
-  <div class="trial" style=" color:white;">TRAINERS LIST</div>
+  <div margin-top=20 align='Center' style= "background-image:url('../../assets/img/training.jpg');background-color: rgba(0, 0, 0, 0.685);">
+  <div class="trial" style=" background-color: rgba(0, 0, 0, 0.685); color:white;">TRAINERS LIST</div>
   <ejs-grid #grid [dataSource]="trainers" [filterSettings]='filterOptions' [allowFiltering]='true' [editSettings]='editSettings' (commandClick)='commandClick($event)' width=1000>
   <e-columns>
   <e-column  headerText='Image'  textAlign='Center'  width=50> <ng-template #template let-trainers> 

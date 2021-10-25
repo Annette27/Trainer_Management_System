@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
 .trial{
-    background-color: rgba(0, 0, 0, 0.719); 
+    background-color: rgba(75, 66, 66, 0.719); 
     /* background-image: url("../../assets/img/online6.jpg"); */
        /* margin-left: 30%; */
     border-radius: 10px;
@@ -9,7 +9,7 @@
 .body{
     /* border: 1px solid black
     ; */
-    background-image: url("../../assets/img/training.jpg");
+    background-image:linear-gradient(rgba(0, 0, 0, 0.616), rgba(0, 0, 0, 0.651)), url("../../assets/img/df.jfif");
     background-position:fixed;
     background-repeat: no-repeat;
     background-size: 100%100%;
