@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   selector: 'app-allocationlist',
   // templateUrl: './allocationlist.component.html',
   template:`
-  <div margin-top=20 align='Center'  style= "background-image:url('../../assets/img/it.jpg'); background-color: rgba(0, 0, 0, 0.685);">
+  <div margin-top=20 align='Center'  style= " background-color:black;">
   <div class="trial" style=" color:white;">BATCH ALLOCATION LIST</div>
   <ejs-grid #grid [dataSource]="allocations" [filterSettings]='filterOptions' [allowFiltering]='true' [editSettings]='editSettings' (commandClick)='commandClick($event)' width=1200>
   <e-columns>
