@@ -1,0 +1,28 @@
+.card{
+    /* border: 1px solid black
+    ; */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.616), rgba(0, 0, 0, 0.651)), url("../../assets/img/walpaptr.jfif");
+    background-position:fixed;
+    background-repeat: no-repeat;
+    background-size: 100%100%;
+    
+      
+}
+
+.card-body{
+    border-radius: 25px;
+    padding: 20px;
+    width: 200px;
+    height: 150px;
+    align-content: center;
+}
+.trial{
+    
+    /* background-color:  rgba(0, 0, 0, 0.719); */
+    /* margin-left: 30%; */
+    border-radius: 10px;
+    padding: 50px;
+    margin-bottom: 60px;
+    width: auto;
+    
+}
