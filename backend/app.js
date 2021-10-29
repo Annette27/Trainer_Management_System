@@ -132,6 +132,9 @@ app.get('/:pro',  (req, res) => {
       .then((data)=>{
           res.send(data);
       })
+      .catch((error)=>{
+console.log(error)
+      })
       })
  //   view many allocation
  app.get('/viewalloc/:pro',  (req, res) => {
